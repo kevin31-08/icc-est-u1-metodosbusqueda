@@ -1,27 +1,37 @@
-import models.Product;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import models.Persona;
 
 public class App {
 
     public static void main(String[] args ){
-        Product[] producs ={
-            new Product("lapton", 20),
-            new Product("cell",200),
-            new Product("television", 3000),
-            new Product("monitor", 132),
-            new Product("pantalla", 13234)
-        };
-        BusquedaBinaria bBusqueda = new BusquedaBinaria();
-        bBusqueda.sortByName(producs);
-        for(Product productr : producs){
-            System.out.println(productr);
-        }
 
+        Scanner teclado = new Scanner(System.in);
+        System.out.print("Ingrese el numero de personas que desea ingresar....:):");
+        int num = teclado.nextInt();
+        Persona[] personas = new Persona[num];
+        for(int i = 0; i< personas.length;i++){
+            Persona personita = new Persona();
+            System.out.println("Ingrese Persona: ");
+            System.out.print("Nombre: ");
+            String nombre = teclado.next();
+            System.out.print("Edad: ");
+            int edad = teclado.nextInt();
+            personita.setNombre(nombre);
+            personita.setEdad(edad);
+            personas[i]= personita;
+
+        }  
+        
+        System.out.println("Ingrese la edad que desea buscar: ");
+        int edadBuscada = teclado.nextInt();
         BusquedaBinaria bBinaria = new BusquedaBinaria();
-        int res = bBinaria.finByname(producs, "lapton");
+        int res = bBinaria.finByname(personas, edadBuscada);
         if (res>= 0) {
-            System.out.println("Entre en pos = "+res);
+            System.out.println("\n La persona con la edad"+" " + edadBuscada +" " + "es" + " "+ personas[res].getNombre() );
         }else{
-            System.out.println("no se enocntro ");
+            System.out.println("\n No se enocntro ");
         }
     }
     
