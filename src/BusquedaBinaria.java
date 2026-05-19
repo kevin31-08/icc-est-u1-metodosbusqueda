@@ -28,10 +28,7 @@ public class BusquedaBinaria {
 
             // comparamos con la clave
             int comparacion = valorCentral - edad ;
-
-            // si es igual, retornamos el punto central
-            
-
+   
             // si es menor, buscamos hacia la derecha
             if (comparacion < 0) {
 
